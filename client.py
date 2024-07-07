@@ -8,3 +8,5 @@ def read_config():
 
 read_config()
 print(server_ip)
+
+print("Check submodule update")
