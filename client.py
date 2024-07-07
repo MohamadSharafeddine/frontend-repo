@@ -1,12 +1,14 @@
 import yaml
 
-def read_config():
-    with open("config.yaml", "r") as config_file:
-        config_data = yaml.safe_load(config_file)
-        global server_ip
-        server_ip = config_data.get("ServerIPAddress")
+class Client:
+    def __init__(self, config_path='\config.yaml'):
+        with open(config_path, 'r') as file:
+            self.config = yaml.safe_load(file)
+        self.server_ip = self.config['ServerIPAddress']
 
-read_config()
-print(server_ip)
+    def run(self):
+        print(f'Client connecting to server at {self.server_ip}')
 
-print("Check submodule update")
+if __name__ == "__main__":
+    client = Client()
+    client.run()
